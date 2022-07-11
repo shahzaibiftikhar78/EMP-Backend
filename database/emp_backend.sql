@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 06:20 PM
+-- Generation Time: Jul 11, 2022 at 10:38 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -52,6 +52,31 @@ INSERT INTO `eroamingauthentificationdata` (`ID`, `ProviderID`, `Identification`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `eroamingauthorizeremotestart`
+--
+
+CREATE TABLE `eroamingauthorizeremotestart` (
+  `ID` int(11) NOT NULL,
+  `SessionID` varchar(200) NOT NULL,
+  `CPOPartnerSessionID` varchar(250) NOT NULL,
+  `EMPPartnerSessionID` varchar(250) NOT NULL,
+  `ProviderID` varchar(200) NOT NULL,
+  `EvseID` varchar(200) NOT NULL,
+  `Identification` varchar(200) NOT NULL,
+  `PartnerProductID` varchar(200) NOT NULL,
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `eroamingauthorizeremotestart`
+--
+
+INSERT INTO `eroamingauthorizeremotestart` (`ID`, `SessionID`, `CPOPartnerSessionID`, `EMPPartnerSessionID`, `ProviderID`, `EvseID`, `Identification`, `PartnerProductID`, `DateTime`) VALUES
+(1, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '123-123', 'RemoteIdentification', '', '2022-07-11 05:37:06');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `eroamingauthorizestart`
 --
 
@@ -68,6 +93,41 @@ CREATE TABLE `eroamingauthorizestart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `eroamingauthorizestart`
+--
+
+INSERT INTO `eroamingauthorizestart` (`ID`, `SessionID`, `CPOPartnerSessionID`, `EMPPartnerSessionID`, `OperatorID`, `EvseID`, `Identification`, `PartnerProductID`, `DateTime`) VALUES
+(1, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '', 'RemoteIdentification', '', '2022-07-11 05:20:44'),
+(2, '', '', '', 'DE0399', '', 'RemoteIdentification', '', '2022-07-11 05:22:39'),
+(3, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '', 'RemoteIdentification', '', '2022-07-11 05:31:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eroamingauthorizestop`
+--
+
+CREATE TABLE `eroamingauthorizestop` (
+  `ID` int(11) NOT NULL,
+  `SessionID` varchar(200) NOT NULL,
+  `CPOPartnerSessionID` varchar(250) NOT NULL,
+  `EMPPartnerSessionID` varchar(250) NOT NULL,
+  `OperatorID` varchar(200) NOT NULL,
+  `EvseID` varchar(200) NOT NULL,
+  `Identification` varchar(200) NOT NULL,
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `eroamingauthorizestop`
+--
+
+INSERT INTO `eroamingauthorizestop` (`ID`, `SessionID`, `CPOPartnerSessionID`, `EMPPartnerSessionID`, `OperatorID`, `EvseID`, `Identification`, `DateTime`) VALUES
+(1, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '', 'RemoteIdentification', '2022-07-11 04:53:31'),
+(2, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '', 'RemoteIdentification', '2022-07-11 05:23:34'),
+(3, 'b2688855-7f00-0002-6d8e-48d883f6abb6', '', '', 'DE0399', '', 'RemoteIdentification', '2022-07-11 05:33:17');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -78,9 +138,21 @@ ALTER TABLE `eroamingauthentificationdata`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `eroamingauthorizeremotestart`
+--
+ALTER TABLE `eroamingauthorizeremotestart`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `eroamingauthorizestart`
 --
 ALTER TABLE `eroamingauthorizestart`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `eroamingauthorizestop`
+--
+ALTER TABLE `eroamingauthorizestop`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -94,10 +166,22 @@ ALTER TABLE `eroamingauthentificationdata`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `eroamingauthorizeremotestart`
+--
+ALTER TABLE `eroamingauthorizeremotestart`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `eroamingauthorizestart`
 --
 ALTER TABLE `eroamingauthorizestart`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `eroamingauthorizestop`
+--
+ALTER TABLE `eroamingauthorizestop`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
