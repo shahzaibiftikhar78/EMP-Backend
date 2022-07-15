@@ -181,21 +181,6 @@ function verification($identification_type, $array){
 		$UID = $array['UID'];
 		$query = "SELECT * FROM eroamingauthentificationdata WHERE UID = '$UID' AND Identification='RFIDMifareFamilyIdentification'"; // To verify identification data through request
 		$result = mysqli_query($db, $query) or die("SQL Query Failed");
-		if(mysqli_num_rows($result)>0){
-			$query_ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-			$response_array = array(
-				"AuthorizationStatus" => "Success",
-			    "StatusCode"          => "000",
-			    "ProviderID"          => $query_ans[0]['ProviderID']
-			);
-		}
-		else{
-			$response_array = array(
-				"AuthorizationStatus" => "Unauthorized Access.",
-			    "StatusCode"          => "017"
-			);
-		}
-
 	}else if($identification_type=="RFIDIdentification"){
 		include "connection.php";
 		$UID           = $array['UID']; // Must
@@ -221,20 +206,6 @@ function verification($identification_type, $array){
 		$query = "SELECT * FROM eroamingauthentificationdata WHERE UID = '$UID' AND  EvcoID ='$EvcoID' AND PrintedNumber='$PrintedNumber' AND ExpiryDate='$ExpiryDate' AND RFID ='$RFID' AND Identification='RFIDIdentification'"; // To verify identification data through request
 	    }
 		$result = mysqli_query($db, $query) or die("SQL Query Failed");
-		if(mysqli_num_rows($result)>0){
-			$query_ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-			$response_array = array(
-				"AuthorizationStatus" => "Success",
-			    "StatusCode"          => "000",
-			    "ProviderID"          => $query_ans[0]['ProviderID']
-			);
-		}
-		else{
-			$response_array = array(
-				"AuthorizationStatus" => "Unauthorized Access.",
-			    "StatusCode"          => "017"
-			);
-		}
 	}else if($identification_type=="QRCodeIdentification"){
 		include "connection.php";
 		$EvcoID        = $array['EvcoID']; // Must
@@ -251,46 +222,20 @@ function verification($identification_type, $array){
 	    $query = "SELECT * FROM eroamingauthentificationdata WHERE EvcoID = '$EvcoID' AND PIN='$PIN' AND HashedPIN ='$HashedPIN' AND Identification='QRCodeIdentification'"; // To verify identification data through request	
 	    }
 		$result = mysqli_query($db, $query) or die("SQL Query Failed");
-		if(mysqli_num_rows($result)>0){
-			$query_ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-			$response_array = array(
-				"AuthorizationStatus" => "Success",
-			    "StatusCode"          => "000",
-			    "ProviderID"          => $query[0]['ProviderID']
-			);
-		}
-		else{
-			$response_array = array(
-				"AuthorizationStatus" => "Unauthorized Access.",
-			    "StatusCode"          => "017"
-			);
-		}
 	}else if($identification_type=="PlugAndChargeIdentification"){
         include "connection.php";
 		$EvcoID = $array['EvcoID'];
 		$query = "SELECT * FROM eroamingauthentificationdata WHERE EvcoID = '$EvcoID' AND Identification='PlugAndChargeIdentification'"; // To verify identification data through request
 		$result = mysqli_query($db, $query) or die("SQL Query Failed");
-		if(mysqli_num_rows($result)>0){
-			$query_ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-			$response_array = array(
-				"AuthorizationStatus" => "Success",
-			    "StatusCode"          => "000",
-			    "ProviderID"          => $query_ans[0]['ProviderID']
-			);
-		}
-		else{
-			$response_array = array(
-				"AuthorizationStatus" => "Unauthorized Access.",
-			    "StatusCode"          => "017"
-			);
-		}
 
 	}else if($identification_type=="RemoteIdentification"){
         include "connection.php";
 		$EvcoID = $array['EvcoID'];
 		$query = "SELECT * FROM eroamingauthentificationdata WHERE EvcoID = '$EvcoID' AND Identification='RemoteIdentification'"; // To verify identification data through request
 		$result = mysqli_query($db, $query) or die("SQL Query Failed");
-		if(mysqli_num_rows($result)>0){
+	}
+
+	if(mysqli_num_rows($result)>0){
 			$query_ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 			$response_array = array(
 				"AuthorizationStatus" => "Success",
@@ -298,14 +243,13 @@ function verification($identification_type, $array){
 			    "ProviderID"          => $query_ans[0]['ProviderID']
 			);
 		}
-		else{
+	else{
 			$response_array = array(
 				"AuthorizationStatus" => "Unauthorized Access.",
 			    "StatusCode"          => "017"
 			);
 		}
 
-	}
 	return $response_array; // response array return from verification function
 
 	}

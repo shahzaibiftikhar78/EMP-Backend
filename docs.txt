@@ -78,3 +78,24 @@ Example request response:
 	"CPOPartnerSessionID":"",
 	"EMPPartnerSessionID":""
 }
+
+4) For eRoamingAuthorizeRemoteStop
+
+URL : http://localhost/EMP-Backend/eRoamingAuthorizeRemoteStop.php
+Example request with essential parameters for API testing: 
+{
+	"SessionID"           : "b2688855-7f00-0002-6d8e-48d883f6abb6",
+	"CPOPartnerSessionID" : "",
+	"EMPPartnerSessionID" : "",
+	"ProviderID"          : "DE0399",
+	"EvseID"              : "123-123"
+}
+Example request response:
+{
+	"Result"             :"true",
+	"AuthorizationStatus":"Success",
+	"StatusCode"         :"000",
+	"SESSIONID"          :"b2688855-7f00-0002-6d8e-48d883f6abb6",
+	"CPOPartnerSessionID":"",
+	"EMPPartnerSessionID":""
+}s
