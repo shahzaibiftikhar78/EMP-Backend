@@ -98,4 +98,36 @@ Example request response:
 	"SESSIONID"          :"b2688855-7f00-0002-6d8e-48d883f6abb6",
 	"CPOPartnerSessionID":"",
 	"EMPPartnerSessionID":""
-}s
+}
+
+5) For eRoamingChargeDetailRecord
+URL : http://localhost/EMP-Backend/eRoamingChargeDetailRecord.php
+Example request with essential parameters for API testing:
+{
+	"SessionID"           : "b2688855-7f00-0002-6d8e-48d883f6abb6",
+	"CPOPartnerSessionID" : "",
+	"EMPPartnerSessionID" : "",
+	"PartnerProductID"    : "",
+	"EvseID"              : "123-123",
+	"Identification"      : "RemoteIdentification",
+	"EvcoID"			  : "DE-8EO-CAet5e4XY-3",
+	"ChargingStart"       : "",
+	"ChargingEnd"		  : "",
+	"SessionStart"        : "2022-7-17 18:25:47",
+	"SessionEnd"          : "2022-7-17 18:55:47",
+	"MeterValueStart"	  : "29.99",
+	"MeterValueEnd"       : "39.8",
+	"MeterValueInBetween" : "",
+	"ConsumedEnergy"      : "",
+	"MeetingSignature"    : "",
+	"HubOperatorID"       : ""
+}
+Example request response:
+{
+	"Result"             :"true",
+	"AuthorizationStatus":"Success",
+	"StatusCode"         :"000",
+	"SESSIONID"          :"b2688855-7f00-0002-6d8e-48d883f6abb6",
+	"CPOPartnerSessionID":"",
+	"EMPPartnerSessionID":""
+}
